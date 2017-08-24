@@ -1,0 +1,9 @@
+.label-error {
+    color: red;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.align-prefix {
+    margin-left: 45px;
+}

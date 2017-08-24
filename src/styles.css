@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+/*=================================================================================
+    General
+====================================================================================*/
+/*----------------------------------------
+  General Layout Style
+------------------------------------------*/
+
+html {
+    /* display: table; */
+    margin: auto;
+}
+body {
+    /* display: table-cell; */
+    /* vertical-align: middle; */
+}
+
+body {
+  background-color: #fcfcfc;
+  height: 100%;
+}
+#main,
+footer {
+  padding-left: 240px;
+}
+.margin {
+  margin: 0;
+}
+#input-select .input-field label {
+  position: absolute;
+  top: -14px;
+  font-size: 0.8rem;
+}
+#sidenav-overlay {
+  background-color: transparent;
+}
+.container {
+  padding: 0 0.5rem;
+  margin: 0 auto;
+  max-width: 100% !important;
+  width: 98%;
+}
+
+#left-sidebar-nav span.badge.new{
+  line-height: 20px;
+  margin-top: 11px;
+}
+
+#content .container .row {
+  margin-bottom: 0;
+}

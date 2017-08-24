@@ -1,0 +1,32 @@
+/*=================================================================================
+    Header
+====================================================================================*/
+/*----------------------------------------
+    Page Header
+------------------------------------------*/
+h1.logo-wrapper{
+  margin: 0px 0px;
+}
+h1 span.logo-text{
+  display: none;
+}
+header .brand-logo {
+  margin: 5px 0px;
+  /*padding: 0 42px;
+  padding: 0px 10px 0 75px;*/
+  
+  padding: 0 20px;
+}
+li.search-out:hover{
+  background: transparent;
+}
+.search-out{
+  display: none;
+}
+.search-out-text{
+  border-bottom: 1px solid #fff !important;
+}
+.search-out input[type=text]:focus:not([readonly]){
+ border-bottom: 1px solid #fff !important; 
+ box-shadow:none;
+}
