@@ -1,3 +1,4 @@
+import { Endereco } from '../../shared/models/endereco';
 import { Fornecedor } from './models/fornecedor';
 import { FornecedorLista } from './models/fornecedorLista';
 import { Injectable } from '@angular/core';
@@ -18,6 +19,6 @@ export class FornecedorService {
     }
 
     obterFornecedorPorId(id: String) {
-        return new Fornecedor('1', 'Bellus Hair Lux', 'teste@teste.com', '2566-0030', '99653-2953', '08141300', 'Rua Manuel Nunes Figueira', '190', '', 'Chácara Dona Olívia', 'São Paulo', 'SP');
+        return new Fornecedor('1', 'Bellus Hair Lux', 'teste@teste.com', '2566-0030', '99653-2953', new Endereco('08141300', 'Rua Manuel Nunes Figueira', '190', '', 'Chácara Dona Olívia', 'São Paulo', 'SP'));
     }
 }

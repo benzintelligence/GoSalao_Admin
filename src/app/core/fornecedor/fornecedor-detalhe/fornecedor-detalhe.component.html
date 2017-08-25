@@ -30,33 +30,33 @@
       <div class="row">
         <div class="input-field col s3">
             <span>CEP: </span>
-            <span>{{ fornecedor.cep }}</span>
+            <span>{{ fornecedor.endereco.cep }}</span>
         </div>
         <div class="input-field col s6">
             <span>Logradouro: </span>
-            <span>{{ fornecedor.logradouro }}</span>
+            <span>{{ fornecedor.endereco.logradouro }}</span>
         </div>
         <div class="input-field col s3">
             <span>Número: </span>
-            <span>{{ fornecedor.numero }}</span>
+            <span>{{ fornecedor.endereco.numero }}</span>
         </div>
       </div>
       <div class="row">
           <div class="input-field col s3">
               <span>Complemento: </span>
-              <span>{{ fornecedor.complemento }}</span>
+              <span>{{ fornecedor.endereco.complemento }}</span>
           </div>
           <div class="input-field col s3">
               <span>Bairro: </span>
-              <span>{{ fornecedor.bairro }}</span>
+              <span>{{ fornecedor.endereco.bairro }}</span>
           </div>
           <div class="input-field col s3">
               <span>Cidade: </span>
-              <span>{{ fornecedor.bairro }}</span>
+              <span>{{ fornecedor.endereco.cidade }}</span>
           </div>
           <div class="input-field col s3">
               <span>Estado: </span>
-              <span>{{ fornecedor.bairro }}</span>
+              <span>{{ fornecedor.endereco.uf }}</span>
           </div>
       </div>
     </div>

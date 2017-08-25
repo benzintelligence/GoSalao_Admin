@@ -1,0 +1,9 @@
+<div class="input-field col s6" [formGroup]="parentFormGroup">
+    <i class="material-icons prefix">{{ icon }}</i>
+    <input id="text" maxlength="30" [formControlName]="nameField" type="tel" [ngClass]="field.applyCssError(parentFormGroup, nameField)">
+    <label for="text">{{ label }}</label>
+    <field-control-error
+        [showError]="field.verifyValidTouched(parentFormGroup, nameField)" [align]="true"
+        [msgError]="messageError">
+    </field-control-error>
+  </div>

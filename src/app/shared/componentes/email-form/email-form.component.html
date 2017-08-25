@@ -1,0 +1,9 @@
+<div class="input-field col s6" [formGroup]="parentFormGroup">
+    <i class="material-icons prefix">email</i>
+    <input id="text" maxlength="80" [formControlName]="nameField" type="email" [ngClass]="field.applyCssError(parentFormGroup, nameField)">
+    <label for="text">E-mail</label>
+    <field-control-error
+        [showError]="field.verifyValidTouched(parentFormGroup, nameField)" [align]="true"
+        [msgError]="messageError">
+    </field-control-error>
+  </div>

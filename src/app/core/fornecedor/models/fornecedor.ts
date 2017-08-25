@@ -1,3 +1,5 @@
+import { Endereco } from '../../../shared/models/endereco';
+
 export class Fornecedor {
     constructor(
         public id: String = null,
@@ -5,13 +7,8 @@ export class Fornecedor {
         public email: String = null,
         public telefone: String = null,
         public celular: String = null,
-
-        public cep: String = null,
-        public logradouro: String = null,
-        public numero: String = null,
-        public complemento: String = null,
-        public bairro: String = null,
-        public cidade: String = null,
-        public uf: String = null
-    ) { }
+        public endereco = null
+    ) {
+        if (!this.endereco) this.endereco = new Endereco();
+    }
 }

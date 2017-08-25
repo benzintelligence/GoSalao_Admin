@@ -17,13 +17,13 @@ export class FornecedorFormComponent implements OnInit, OnDestroy {
 
   private _subscription: Subscription;
   title: string = "Novo Fornecedor";
-  formulario: FormGroup;
+  form: FormGroup;
   fornecedor: Fornecedor;
 
   constructor(
+    public field: FieldValidatorService,
     private _route: ActivatedRoute,
     private _formBuilder: FormBuilder,
-    private _fieldValidatorService: FieldValidatorService,
     private _serviceToast: ToastService,
     private _service: FornecedorService
   ) { }
@@ -36,23 +36,12 @@ export class FornecedorFormComponent implements OnInit, OnDestroy {
 
       if (id) {
         this.fornecedor = this._service.obterFornecedorPorId(id);
+        this.title = `Atualizando Fornecedor: ${this.fornecedor.nome}`;
       }
     });
 
-    this.formulario = this._formBuilder.group({
-      nome: [this.fornecedor.nome, [Validators.required, Validators.minLength(3), Validators.pattern(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/) ]],
-      email: [this.fornecedor.email, [Validators.required, Validators.email]],
-      telefone: [this.fornecedor.telefone, [Validators.required, Validators.pattern(/^1\d\d(\d\d)?$|^0800 ?\d{3} ?\d{4}$|^(\(0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d\) ?|0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d[ .-]?)?(9|9[ .-])?[2-9]\d{3}[ .-]?\d{4}$/)]],
-      celular: [this.fornecedor.celular, [Validators.required, Validators.pattern(/^1\d\d(\d\d)?$|^0800 ?\d{3} ?\d{4}$|^(\(0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d\) ?|0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d[ .-]?)?(9|9[ .-])?[2-9]\d{3}[ .-]?\d{4}$/)]],
-      localizacao: this._formBuilder.group({
-        cep: [this.fornecedor.cep, [Validators.required, Validators.pattern(/^[0-9]{8}$/), Validators.minLength(8), Validators.maxLength(8)] ],
-        logradouro: [this.fornecedor.logradouro, Validators.required],
-        numero: [this.fornecedor.numero, Validators.required],
-        complemento: [this.fornecedor.complemento],
-        bairro: [this.fornecedor.bairro, Validators.required],
-        cidade: [this.fornecedor.cidade, Validators.required],
-        uf: [this.fornecedor.uf, Validators.required]
-      })
+    this.form = this._formBuilder.group({
+      nome: [this.fornecedor.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(120) , Validators.pattern(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/) ]]
     });
   }
 
@@ -61,7 +50,7 @@ export class FornecedorFormComponent implements OnInit, OnDestroy {
   }  
 
   public onSubmit() {
-    console.log(this.formulario);
+    console.log(this.form);
     // this._serviceToast.toast('Fornecedor cadastrado com sucesso!', 'rounded green');
     // this._http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
     //     .subscribe(dados => {
@@ -73,19 +62,7 @@ export class FornecedorFormComponent implements OnInit, OnDestroy {
   }
 
   public resetarForm() {
-    this.formulario.reset();
+    this.form.reset();
     this._serviceToast.toast('Formulário redefinido');
-  }
-
-  public verifyValidTouched(campo: string) {
-    return this._fieldValidatorService.verifyValidTouched(this.formulario.get(campo))
-  }
-
-  public applyCssError(campo: string) {
-    return this._fieldValidatorService.applyCssError(this.formulario.get(campo));
-  }
-
-  public activeButtonSend() {
-    return this._fieldValidatorService.activeButtonSend(this.formulario);
   }
 }

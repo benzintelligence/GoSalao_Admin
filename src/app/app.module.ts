@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import 'rxjs/add/operator/map'
 
 import { MaterializeModule } from 'angular2-materialize';
 

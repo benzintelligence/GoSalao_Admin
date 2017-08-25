@@ -1,106 +1,49 @@
 <div class="row">
-  <form class="col s12" [formGroup]="formulario" >
+  <form class="col s12" [formGroup]="form" >
     <h5>{{ title }}</h5>
     <div class="row">
       <div class="input-field col s6" >
         <i class="material-icons prefix">account_circle</i>
-        <input id="nome" formControlName="nome" type="text" [ngClass]="applyCssError('nome')">
+        <input id="nome" type="text" minlength="3" maxlength="120"
+          formControlName="nome" [ngClass]="field.applyCssError(form, 'nome')">
         <label for="nome">Nome</label>
         <field-control-error
-            [showError]="verifyValidTouched('nome')" [align]="true"
+            [showError]="field.verifyValidTouched(form, 'nome')" [align]="true"
             msgError="Nome com mínimo de 3 caracteres, sem números ou símbolos especiais">
         </field-control-error>
       </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">email</i>
-        <input id="text" formControlName="email" type="email" [ngClass]="applyCssError('email')">
-        <label for="text">E-mail</label>
-        <field-control-error
-            [showError]="verifyValidTouched('email')" [align]="true"
-            msgError="Informe o e-mail em um formato válido">
-        </field-control-error>
-      </div>
+
+      <email-form
+        [parentFormGroup]="form"
+        [value]="fornecedor.email"
+        nameField="email"
+        messageError="Informe o e-mail em um formato válido">
+      </email-form>
     </div>
     <div class="row">
-      <div class="input-field col s6">
-        <i class="material-icons prefix">phone_iphone</i>
-        <input id="text" formControlName="celular" type="tel" [ngClass]="applyCssError('celular')" placeholder="11 91234-5678">
-        <label for="text">Celular (Informe o DDD)</label>
-        <field-control-error
-            [showError]="verifyValidTouched('celular')" [align]="true"
-            msgError="Informe um número de celular válido">
-        </field-control-error>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">phone</i>
-        <input id="telefone" formControlName="telefone" type="tel" [ngClass]="applyCssError('telefone')" placeholder="11 1234-5678">
-        <label for="telefone">Telefone (Informe o DDD)</label>
-        <field-control-error
-            [showError]="verifyValidTouched('telefone')" [align]="true"
-            msgError="Informe um número de telefone fixo válido">
-        </field-control-error>
-      </div>
+      <phone-form
+        [parentFormGroup]="form"
+        [value]="fornecedor.celular"
+        nameField="celular"          
+        icon="phone_iphone"
+        label="Celular"
+        messageError="Informe um número de celular válido">
+      </phone-form>
+
+      <phone-form
+        [parentFormGroup]="form"
+        [value]="fornecedor.telefone"
+        nameField="telefone"          
+        icon="phone"
+        label="Telefone"
+        messageError="Informe um número de telefone fixo válido">
+      </phone-form>
     </div>
 
-    <div formGroupName="localizacao"> <!-- Localização -->
-      <h5><i class="material-icons prefix">person_pin_circle</i> Dados de endereço</h5>
-      <div class="row">
-        <div class="input-field col s3">
-          <input id="cep" formControlName="cep" type="text" [ngClass]="applyCssError('localizacao.cep')" minlength="8" maxlength="8" placeholder="Somente números">
-          <label for="cep">CEP</label>
-          <field-control-error
-              [showError]="verifyValidTouched('localizacao.cep')"
-              msgError="CEP apenas com números">
-          </field-control-error>
-        </div>
-        <div class="input-field col s6">
-          <input id="logradouro" formControlName="logradouro" type="text" [ngClass]="applyCssError('localizacao.logradouro')">
-          <label for="logradouro">Lograduro</label>
-          <field-control-error
-              [showError]="verifyValidTouched('localizacao.logradouro')"
-              msgError="Logradouro é obrigatório">
-          </field-control-error>
-        </div>
-        <div class="input-field col s3">
-          <input id="numero" formControlName="numero" type="text" [ngClass]="applyCssError('localizacao.numero')">
-          <label for="numero">Número</label>
-          <field-control-error
-              [showError]="verifyValidTouched('localizacao.numero')"
-              msgError="Número é obrigatório (ou S/N)">
-          </field-control-error>
-        </div>
-      </div>
-      <div class="row">
-          <div class="input-field col s3">
-            <input id="complemento" formControlName="complemento" type="text">
-            <label for="complemento">Complemento</label>
-          </div>
-          <div class="input-field col s3">
-            <input id="bairro" formControlName="bairro" type="text" [ngClass]="applyCssError('localizacao.bairro')">
-            <label for="bairro">Bairro</label>
-            <field-control-error
-                [showError]="verifyValidTouched('localizacao.bairro')"
-                msgError="Bairro é obrigatório">
-            </field-control-error>
-          </div>
-          <div class="input-field col s3">
-            <input id="cidade" formControlName="cidade" type="text" [ngClass]="applyCssError('localizacao.cidade')">
-            <label for="cidade">Cidade</label>
-            <field-control-error
-                [showError]="verifyValidTouched('localizacao.cidade')"
-                msgError="Cidade é obrigatória">
-            </field-control-error>
-          </div>
-          <div class="input-field col s3">
-            <input id="uf" formControlName="uf" type="text" [ngClass]="applyCssError('localizacao.uf')">
-            <label for="uf">Estado</label>
-            <field-control-error
-                [showError]="verifyValidTouched('localizacao.uf')"
-                msgError="Estado é obrigatório">
-            </field-control-error>
-          </div>
-      </div>
-    </div>    
+    <endereco-form
+      [parentFormGroup]="form"
+      [endereco]="fornecedor.endereco">
+    </endereco-form>
   </form>
 
   <div class="container">
@@ -110,7 +53,7 @@
     <button (click)="resetarForm()" class="btn btn-sm waves-effect waves-light red">
       Limpar <i class="material-icons right">clear_all</i>
     </button>
-    <button (click)="onSubmit()" class="btn btn-sm waves-effect waves-light" [disabled]="activeButtonSend()">
+    <button (click)="onSubmit()" class="btn btn-sm waves-effect waves-light" [disabled]="form.invalid || form.pristine">
       Enviar <i class="material-icons right">send</i>
     </button>
   </div>

@@ -1,0 +1,9 @@
+<div class="input-field col s6" [formGroup]="parentFormGroup">
+    <i *ngIf="icon" class="material-icons prefix">{{ icon }}</i>
+    <input [id]="nameField" [formControlName]="nameField" type="text" [ngClass]="field.applyCssError(parentFormGroup, nameField)">
+    <label [for]="nameField">{{ label }}</label>
+    <field-control-error
+        [showError]="field.verifyValidTouched(parentFormGroup, nameField)" [align]="alignMessage"
+        [msgError]="messageError">
+    </field-control-error>
+  </div>

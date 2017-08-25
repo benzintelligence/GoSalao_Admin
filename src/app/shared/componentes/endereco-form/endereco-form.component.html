@@ -1,0 +1,74 @@
+<div [formGroup]="parentFormGroup">
+  <div formGroupName="endereco">
+      <h5><i class="material-icons prefix">person_pin_circle</i> Dados de endereço</h5>
+      <div class="row">
+        <div class="input-field col s3">
+          <input id="cep" type="text" formControlName="cep"
+            [ngClass]="field.applyCssError(parentFormGroup, 'endereco.cep')"
+            minlength="8" maxlength="8"
+            (blur)="consultarCEP()">
+          <label for="cep">CEP</label>
+          <field-control-error
+            [showError]="field.verifyValidTouched(parentFormGroup, 'endereco.cep')"
+            msgError="CEP apenas com números">
+          </field-control-error>
+        </div>
+        <div class="input-field col s6">
+          <input id="logradouro" type="text" formControlName="logradouro"
+            [ngClass]="field.applyCssError(parentFormGroup, 'endereco.logradouro')"
+            maxlength="80">
+          <label for="logradouro">Lograduro</label>
+          <field-control-error
+            [showError]="field.verifyValidTouched(parentFormGroup, 'endereco.logradouro')"
+            msgError="Logradouro é obrigatório">
+          </field-control-error>
+        </div>
+        <div class="input-field col s3">
+          <input id="numero" type="text" formControlName="numero"
+            [ngClass]="field.applyCssError(parentFormGroup, 'endereco.numero')"
+            maxlength="50">
+          <label for="numero">Número</label>
+          <field-control-error
+            [showError]="field.verifyValidTouched(parentFormGroup, 'endereco.numero')"
+            msgError="Número é obrigatório (ou S/N)">
+          </field-control-error>
+        </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s3">
+            <input id="complemento" formControlName="complemento" type="text" maxlength="80">
+            <label for="complemento">Complemento</label>
+          </div>
+          <div class="input-field col s3">
+            <input id="bairro" type="text" formControlName="bairro"
+              [ngClass]="field.applyCssError(parentFormGroup, 'endereco.bairro')"
+              maxlength="80">
+            <label for="bairro">Bairro</label>
+            <field-control-error
+              [showError]="field.verifyValidTouched(parentFormGroup, 'endereco.bairro')"
+              msgError="Bairro é obrigatório">
+            </field-control-error>
+          </div>
+          <div class="input-field col s3">
+            <input id="cidade" type="text" formControlName="cidade"
+              [ngClass]="field.applyCssError(parentFormGroup, 'endereco.cidade')"
+              maxlength="80">
+            <label for="cidade">Cidade</label>
+            <field-control-error
+              [showError]="field.verifyValidTouched(parentFormGroup, 'endereco.cidade')"
+              msgError="Cidade é obrigatória">
+            </field-control-error>
+          </div>
+          <div class="input-field col s3">
+            <input id="uf" type="text" formControlName="uf"
+              [ngClass]="field.applyCssError(parentFormGroup, 'endereco.uf')"
+              maxlength="40">
+            <label for="uf">Estado</label>
+            <field-control-error
+              [showError]="field.verifyValidTouched(parentFormGroup, 'endereco.uf')"
+              msgError="Estado é obrigatório">
+            </field-control-error>
+          </div>
+      </div>
+  </div>
+</div>
