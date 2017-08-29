@@ -3,41 +3,41 @@
   <a routerLink="novo" class="btn waves-effect waves-light pulse">Cadastrar novo <i class="material-icons right">add</i></a>
 
   <table class="highlight responsive-table">
-        <thead>
-          <tr>
-              <th>Nome</th>
-              <th>Celular</th>
-              <th>Telefone</th>
-              <th>E-mail</th>
-              <th></th>
-          </tr>
-        </thead>
+    <thead>
+      <tr>
+          <th>Nome</th>
+          <th>Celular</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th></th>
+      </tr>
+    </thead>
 
-        <tbody>
-          <tr *ngFor="let f of obterFornecedores()">
-            <td>
-              <a [routerLink]="['editar', f.id]">
-                  {{ f.nome }}
-              </a>
-            </td>
-            <td>{{ f.celular }}</td>
-            <td>{{ f.telefone }}</td>
-            <td>{{ f.email }}</td>
-            <td>
-              <a [routerLink]="['detalhe', f.id]" class="btn-floating btn-sm waves-effect waves-light">
-                <i class="material-icons">remove_red_eye</i>
-              </a>
-              <a [routerLink]="['editar', f.id]" class="btn-floating btn-sm waves-effect waves-light blue">
-                  <i class="material-icons">create</i>
-                </a>
-                <botao
-                  icon="clear" [confirmation]="true" (actionEvent)="remover()"
-                  style="btn-floating btn-sm waves-effect waves-light red">                  
-                </botao>
-            </td>          
-          </tr>
-        </tbody>
-        <tfoot>
-        </tfoot>
-      </table>
+    <tbody>
+      <tr *ngFor="let f of obterFornecedores()">
+        <td>
+          <a [routerLink]="['editar', f.id]">
+              {{ f.nome }}
+          </a>
+        </td>
+        <td>{{ f.celular }}</td>
+        <td>{{ f.telefone }}</td>
+        <td>{{ f.email }}</td>
+        <td>
+          <a [routerLink]="['detalhe', f.id]" class="btn-floating btn-sm waves-effect waves-light">
+            <i class="material-icons">remove_red_eye</i>
+          </a>
+          <a [routerLink]="['editar', f.id]" class="btn-floating btn-sm waves-effect waves-light blue">
+              <i class="material-icons">create</i>
+            </a>
+            <botao
+              icon="clear" [confirmation]="true" (actionEvent)="remover(f.id)"
+              style="btn-floating btn-sm waves-effect waves-light red">                  
+            </botao>
+        </td>          
+      </tr>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
 </div>

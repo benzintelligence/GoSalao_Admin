@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="row">
+      <div class="col s12">
+        <h5>Cliente: {{ cliente.nome }}</h5>
+      </div>
+        
+      <div class="input-field col s6">
+        <i class="material-icons">account_circle</i>
+        <span for="nome">{{ cliente.nome }}</span>
+      </div>
+      <div class="col s6">
+        <i class="material-icons">email</i>
+        <span for="nome">{{ cliente.email }}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <i class="material-icons">phone_iphone</i>
+        <span for="nome">{{ cliente.celular }}</span>
+      </div>
+      <div class="col s6">
+        <i class="material-icons">phone</i>
+        <span for="nome">{{ cliente.telefone }}</span>
+      </div>
+    </div>
+
+
+    <div>
+      <h5><i class="material-icons prefix">person_pin_circle</i> Dados de endereço</h5>
+      <div class="row">
+        <div class="input-field col s3">
+            <span>CEP: </span>
+            <span>{{ cliente.endereco.cep }}</span>
+        </div>
+        <div class="input-field col s6">
+            <span>Logradouro: </span>
+            <span>{{ cliente.endereco.logradouro }}</span>
+        </div>
+        <div class="input-field col s3">
+            <span>Número: </span>
+            <span>{{ cliente.endereco.numero }}</span>
+        </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s3">
+              <span>Complemento: </span>
+              <span>{{ cliente.endereco.complemento }}</span>
+          </div>
+          <div class="input-field col s3">
+              <span>Bairro: </span>
+              <span>{{ cliente.endereco.bairro }}</span>
+          </div>
+          <div class="input-field col s3">
+              <span>Cidade: </span>
+              <span>{{ cliente.endereco.cidade }}</span>
+          </div>
+          <div class="input-field col s3">
+              <span>Estado: </span>
+              <span>{{ cliente.endereco.uf }}</span>
+          </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <a routerLink="/clientes" class="btn btn-sm waves-effect waves-light blue">
+        Voltar à listagem <i class="material-icons right">list</i>
+      </a>
+      <a [routerLink]="['/clientes/editar', cliente.id]" class="btn btn-sm waves-effect waves-light">
+          Editar Cliente <i class="material-icons right">create</i>
+      </a>
+    </div>
+</div>

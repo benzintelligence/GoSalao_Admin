@@ -1,0 +1,43 @@
+<div class="container">
+  <h5>Clientes</h5>
+  <a routerLink="novo" class="btn waves-effect waves-light pulse">Cadastrar novo <i class="material-icons right">add</i></a>
+
+  <table class="highlight responsive-table">
+      <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Celular</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th></th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let c of obterClientes()">
+          <td>
+            <a [routerLink]="['editar', c.id]">
+                {{ c.nome }}
+            </a>
+          </td>
+          <td>{{ c.celular }}</td>
+          <td>{{ c.telefone }}</td>
+          <td>{{ c.email }}</td>
+          <td>
+            <a [routerLink]="['detalhe', c.id]" class="btn-floating btn-sm waves-effect waves-light">
+              <i class="material-icons">remove_red_eye</i>
+            </a>
+            <a [routerLink]="['editar', c.id]" class="btn-floating btn-sm waves-effect waves-light blue">
+                <i class="material-icons">create</i>
+              </a>
+              <botao
+                icon="clear" [confirmation]="true" (actionEvent)="remover(c.id)"
+                style="btn-floating btn-sm waves-effect waves-light red">                  
+              </botao>
+          </td>          
+        </tr>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+</div>

@@ -1,15 +1,18 @@
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+
 import { Endereco } from '../../shared/models/endereco';
 import { Fornecedor } from './models/fornecedor';
 import { FornecedorLista } from './models/fornecedorLista';
-import { Injectable } from '@angular/core';
+
 
 @Injectable()
 export class FornecedorService {
 
-    constructor() { }
+    constructor(private _http: Http) { }
 
     obterFornecedores() {
-        let lista = new Array<FornecedorLista>();        
+        let lista = new Array<FornecedorLista>();
         lista.push(new FornecedorLista(1, 'H Hair e Beleza', '11 99653-2954', '11 2566-0054', 'contato@hairbeleza.com'));
         lista.push(new FornecedorLista(2, 'Bellus Cosméticos', '11 98752-6499', '11 4598-5554', 'bellus@bellus.com'));
         lista.push(new FornecedorLista(3, 'Teste 3', 'Teste 3', 'Teste 3', 'teste@teste.com'));
@@ -19,6 +22,7 @@ export class FornecedorService {
     }
 
     obterFornecedorPorId(id: String) {
-        return new Fornecedor('1', 'Bellus Hair Lux', 'teste@teste.com', '2566-0030', '99653-2953', new Endereco('08141300', 'Rua Manuel Nunes Figueira', '190', '', 'Chácara Dona Olívia', 'São Paulo', 'SP'));
+        return new Fornecedor('1', 'Bellus Hair Lux', 'teste@teste.com', '2566-0030', '99653-2953',
+                new Endereco('01001000', 'Pça da Sé', 'SN', '', 'Centro', 'São Paulo', 'SP'));
     }
 }

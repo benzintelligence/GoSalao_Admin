@@ -1,5 +1,5 @@
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { FornecedorListaComponent } from './fornecedor-lista/fornecedor-lista.component';
 import { FornecedorFormComponent } from './fornecedor-form/fornecedor-form.component';
@@ -10,7 +10,6 @@ const fornecedorRoutes: Routes = [
     { path: 'fornecedores/novo', component: FornecedorFormComponent },
     { path: 'fornecedores/editar/:id', component: FornecedorFormComponent },
     { path: 'fornecedores/detalhe/:id', component: FornecedorDetalheComponent }
-    
 ];
 
 @NgModule({

@@ -14,7 +14,7 @@ export class FornecedorListaComponent {
     return this.service.obterFornecedores();
   }
 
-  remover() {
+  remover(id: String) {
     console.log('Remover fornecedor!');
   }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
 
+import { SharedModule } from '../../shared/shared.module';
 import { FornecedorRoutingModule } from './fornecedor.routing.module';
 import { FornecedorService } from './fornecedor.service';
 import { FornecedorListaComponent } from './fornecedor-lista/fornecedor-lista.component';
@@ -10,7 +10,7 @@ import { FornecedorDetalheComponent } from './fornecedor-detalhe/fornecedor-deta
 @NgModule({
   imports: [
     SharedModule,
-    FornecedorRoutingModule    
+    FornecedorRoutingModule
   ],
   declarations: [
     FornecedorListaComponent,

@@ -1,0 +1,60 @@
+<div class="row">
+    <form class="col s12" [formGroup]="form" >
+      <h5>{{ title }}</h5>
+      <div class="row">
+        <div class="input-field col s6" >
+          <i class="material-icons prefix">account_circle</i>
+          <input id="nome" type="text" minlength="3" maxlength="120"
+            formControlName="nome" [ngClass]="field.applyCssError(form, 'nome')">
+          <label for="nome">Nome</label>
+          <field-control-error
+              [showError]="field.verifyValidTouched(form, 'nome')" [align]="true"
+              msgError="Nome com mínimo de 3 caracteres, sem números ou símbolos especiais">
+          </field-control-error>
+        </div>
+  
+        <email-form
+          [parentFormGroup]="form"
+          [value]="cliente.email"
+          nameField="email"
+          messageError="Informe o e-mail em um formato válido">
+        </email-form>
+      </div>
+      <div class="row">
+        <phone-form
+          [parentFormGroup]="form"
+          [value]="cliente.celular"
+          nameField="celular"          
+          icon="phone_iphone"
+          label="Celular"
+          messageError="Informe um número de celular válido">
+        </phone-form>
+  
+        <phone-form
+          [parentFormGroup]="form"
+          [value]="cliente.telefone"
+          nameField="telefone"          
+          icon="phone"
+          label="Telefone"
+          messageError="Informe um número de telefone fixo válido">
+        </phone-form>
+      </div>
+  
+      <endereco-form
+        [parentFormGroup]="form"
+        [endereco]="cliente.endereco">
+      </endereco-form>
+    </form>
+  
+    <div class="container">
+      <a routerLink="/clientes" class="btn btn-sm waves-effect waves-light blue">
+        Voltar à listagem <i class="material-icons right">list</i>
+      </a>
+      <button (click)="resetarForm()" class="btn btn-sm waves-effect waves-light red">
+        Limpar <i class="material-icons right">clear_all</i>
+      </button>
+      <button (click)="onSubmit()" class="btn btn-sm waves-effect waves-light" [disabled]="form.invalid || form.pristine">
+        Enviar <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </div>

@@ -1,47 +1,46 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
-import { FieldValidatorService } from '../../../shared/services/field-validator.service';
+import { Cliente } from '../models/cliente';
+import { ClienteService } from '../cliente.service';
 import { ToastService } from '../../../shared/services/toast.service';
-import { FornecedorService } from '../fornecedor.service';
-import { Fornecedor } from '../models/fornecedor';
+import { FieldValidatorService } from '../../../shared/services/field-validator.service';
 
 @Component({
-  selector: 'app-fornecedor-form',
-  templateUrl: './fornecedor-form.component.html',
-  styleUrls: ['./fornecedor-form.component.css']
+  selector: 'app-cliente-form',
+  templateUrl: './cliente-form.component.html',
+  styleUrls: ['./cliente-form.component.css']
 })
-export class FornecedorFormComponent implements OnInit, OnDestroy {
+export class ClienteFormComponent implements OnInit, OnDestroy {
 
   private _subscription: Subscription;
-  title: String = 'Novo Fornecedor';
+  title: String = 'Novo Cliente';
   form: FormGroup;
-  fornecedor: Fornecedor;
+  cliente: Cliente;
 
   constructor(
     public field: FieldValidatorService,
     private _route: ActivatedRoute,
     private _formBuilder: FormBuilder,
     private _serviceToast: ToastService,
-    private _service: FornecedorService
+    private _service: ClienteService
   ) { }
 
   ngOnInit() {
     this._subscription = this._route.params.subscribe(params => {
-
-      this.fornecedor = new Fornecedor();
+      this.cliente = new Cliente();
       const id = params['id'];
-
+      
       if (id) {
-        this.fornecedor = this._service.obterFornecedorPorId(id);
-        this.title = `Atualizando Fornecedor: ${this.fornecedor.nome}`;
+        this.cliente = this._service.obterClientePorId(id);
+        this.title = `Atualizando Cliente: ${this.cliente.nome}`;
       }
     });
 
     this.form = this._formBuilder.group({
-      nome: [this.fornecedor.nome, [
+      nome: [this.cliente.nome, [
               Validators.required,
               Validators.minLength(3),
               Validators.maxLength(120) ,
@@ -50,20 +49,12 @@ export class FornecedorFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this._subscription.unsubscribe();
   }
 
   public onSubmit() {
     console.log(this.form);
-    // this._serviceToast.toast('Fornecedor cadastrado com sucesso!', 'rounded green');
-    // this._http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-    //     .subscribe(dados => {
-    //       console.log(dados);
-    //       this.resetarForm();
-    //     },
-    //       (error: any) => alert(error)
-    //     );
   }
 
   public resetarForm() {

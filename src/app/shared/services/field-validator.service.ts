@@ -11,7 +11,7 @@ export class FieldValidatorService {
     public applyCssError(form: FormGroup, field: string) {
         if (form.get(field).untouched) return;
 
-        return !this.verifyValidTouched(form, field) ? 'valid' : 'invalid';        
+        return !this.verifyValidTouched(form, field) ? 'valid' : 'invalid';
     }
 
     public activeButtonSend(form: FormGroup) {
