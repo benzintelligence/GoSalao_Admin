@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="row">
+    <div class="col s12">
+      <h5>Profissional: {{ profissional.nome }} - {{ profissional.cargo }}</h5>
+    </div>
+      
+    <div class="input-field col s6">
+      <i class="material-icons">account_circle</i>
+      <span for="nome">{{ profissional.nome }}</span>
+    </div>
+    <div class="col s6">
+      <i class="material-icons">email</i>
+      <span for="nome">{{ profissional.email }} <label class="destacarLogin">(Login)</label>  </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6">
+      <i class="material-icons">phone_iphone</i>
+      <span for="nome">{{ profissional.celular }}</span>
+    </div>
+    <div class="col s6">
+      <i class="material-icons">phone</i>
+      <span for="nome">{{ profissional.telefone }}</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h5><i class="material-icons prefix">person_pin_circle</i> Dados de endereço</h5>
+      <div class="input-field col s3">
+          <span>CEP: </span>
+          <span>{{ profissional.endereco.cep }}</span>
+      </div>
+      <div class="input-field col s6">
+          <span>Logradouro: </span>
+          <span>{{ profissional.endereco.logradouro }}</span>
+      </div>
+      <div class="input-field col s3">
+          <span>Número: </span>
+          <span>{{ profissional.endereco.numero }}</span>
+      </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s3">
+            <span>Complemento: </span>
+            <span>{{ profissional.endereco.complemento }}</span>
+        </div>
+        <div class="input-field col s3">
+            <span>Bairro: </span>
+            <span>{{ profissional.endereco.bairro }}</span>
+        </div>
+        <div class="input-field col s3">
+            <span>Cidade: </span>
+            <span>{{ profissional.endereco.cidade }}</span>
+        </div>
+        <div class="input-field col s3">
+            <span>Estado: </span>
+            <span>{{ profissional.endereco.uf }}</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+      <div class="row">
+        <h5><i class="material-icons prefix">content_cut</i> Habilidades</h5>
+          <div class="container">
+            <ul>
+              <li *ngFor="let hab of profissional.habilidades">
+                {{ hab }}
+              </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+
+  <div class="container">
+    <a routerLink="/profissionais" class="btn btn-sm waves-effect waves-light blue">
+      Voltar à listagem <i class="material-icons right">list</i>
+    </a>
+    <a [routerLink]="['/profissionais/editar', profissional.id]" class="btn btn-sm waves-effect waves-light">
+        Editar Profissional <i class="material-icons right">create</i>
+    </a>
+  </div>
+</div>

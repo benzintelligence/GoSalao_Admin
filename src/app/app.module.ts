@@ -7,6 +7,7 @@ import { MaterializeModule } from 'angular2-materialize';
 import { LayoutModule } from './layout/layout.module';
 import { ClienteModule } from './core/cliente/cliente.module';
 import { FornecedorModule } from './core/fornecedor/fornecedor.module';
+import { ProfissionalModule } from './core/profissional/profissional.module';
 import { AuthenticateModule } from './authenticate/authenticate.module';
 import { PagesModule } from './pages/pages.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
     AuthenticateModule,
     ClienteModule,
     FornecedorModule,
+    ProfissionalModule,
     PagesModule
   ],
   providers: [],

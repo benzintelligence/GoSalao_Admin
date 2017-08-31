@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfissionalService } from '../profissional.service';
 
 @Component({
   selector: 'app-profissional-lista',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfissionalListaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _service: ProfissionalService) { }
 
   ngOnInit() {
   }
 
+  obterProfissionais() {
+    return this._service.obterProfissionais();
+  }
+
+  remover(id: String) {
+    console.log(`Profissional ${id}`);
+  }
 }
